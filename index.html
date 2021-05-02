@@ -7,11 +7,92 @@
     <title>Final Project</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <script>
+
+        function pageLinks()
+        {
+            textbox = document.getElementById('t')
+            button = document.getElementById('button')
+
+            if(textbox.value == 'storage')
+            {
+                storageLink = document.createElement('a')
+                storageLink.href = './storage.html'
+                storageLink.innerHTML = 'Link to Storage.html'
+
+                document.body.appendChild(storageLink)
+            }
+
+            if(textbox.value == 'plugin')
+            {
+                pluginLink = document.createElement('a')
+                pluginLink.href = './plugin.html'
+                pluginLink.innerHTML = 'Link to Plugin.html'
+
+                document.body.appendChild(pluginLink)
+            }
+        }
+
+        function createImages()
+        {
+            if(textbox.value == 'jquery')
+            {
+                for(i = 0; i <= 3; i++)
+                {
+                    img = document.createElement('img')
+                    img.src = './images/dog.jpg'
+
+                    document.body.appendChild(img) 
+
+                    $('img').attr('width', 200)
+                    $('img:nth-of-type(2)').click(function(){
+                        $(this).css('border', 'solid 10px red')
+                    })
+                }
+                
+            }
+        }
+
+        function alphabet()
+        {
+            if(textbox.value == 'alphabet')
+            {
+                for(let i = 'z'.charCodeAt(0); i >= 'a'.charCodeAt(0); i--)
+                {
+                    letter = String.fromCharCode(i)
+
+                    letterImgs = document.createElement('img')
+                    letterImgs.src = './images/letters/' + letter + '.png'
+                    letterImgs.width = 40
+                    
+                    $('img').click(function(){
+                        $('img').attr('src', this.src)
+                    })
+                
+                    document.body.appendChild(letterImgs)
+
+                }
+            }
+        }
+
+        
+
+        function runFunctions()
+        {
+            pageLinks()
+
+            createImages()
+
+            alphabet()
+        }
+
+    </script>
+
 </head>
 <body>
 
     <input type="text" id="t">
-    <button>Go</button>
+    <button id="button" onclick="runFunctions()">Go</button>
     
 </body>
 </html>

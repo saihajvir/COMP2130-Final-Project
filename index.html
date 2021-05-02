@@ -75,6 +75,27 @@
             }
         }
 
+        function ajax()
+        {
+            ajaxReq = new XMLHttpRequest()
+            ajaxReq.open("GET", "advice.txt", true)
+            ajaxReq.onreadystatechange=processData
+            ajaxReq.send(null)
+
+            function processData()
+            {
+                if(ajaxReq.readyState == 4)
+                {
+                    if(ajaxReq.status == 200)
+                    {
+                        ajaxText = document.createElement("h1")
+                        ajaxText.innerHTML = ajaxReq.responseText
+                        document.body.appendChild(ajaxText)
+                    }
+                }
+            }
+        }
+
         
 
         function runFunctions()
@@ -84,6 +105,8 @@
             createImages()
 
             alphabet()
+
+            ajax()
         }
 
     </script>

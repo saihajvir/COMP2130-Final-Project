@@ -77,20 +77,23 @@
 
         function ajax()
         {
-            ajaxReq = new XMLHttpRequest()
-            ajaxReq.open("GET", "advice.txt", true)
-            ajaxReq.onreadystatechange=processData
-            ajaxReq.send(null)
-
-            function processData()
+            if(textbox.value == 'ajax')
             {
-                if(ajaxReq.readyState == 4)
+                ajaxReq = new XMLHttpRequest()
+                ajaxReq.open("GET", "advice.txt", true)
+                ajaxReq.onreadystatechange=processData
+                ajaxReq.send(null)
+
+                function processData()
                 {
-                    if(ajaxReq.status == 200)
+                    if(ajaxReq.readyState == 4)
                     {
-                        ajaxText = document.createElement("h1")
-                        ajaxText.innerHTML = ajaxReq.responseText
-                        document.body.appendChild(ajaxText)
+                        if(ajaxReq.status == 200)
+                        {
+                            ajaxText = document.createElement("h1")
+                            ajaxText.innerHTML = ajaxReq.responseText
+                            document.body.appendChild(ajaxText)
+                        }
                     }
                 }
             }

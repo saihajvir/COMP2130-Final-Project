@@ -8,7 +8,198 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
-<body>
+<body style="background: #20639B;">
+
+    <h1 style="
+    display: flex;
+    justify-content: center;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 60px;
+    color: white; 
+     ">
+        localStorage Explained
+     </h1>
+
+    <div style="
+    display: flex;
+    flex-direction: column;
+    margin: 0 100px 0 100px;
+    ">
+
+        <h2 style="
+        display: flex;
+        justify-content: start;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 30px;
+        color: white;
+        margin-bottom: 5px;
+        ">
+            What is localStorage?
+        </h2>
+
+        <p style="
+        display: flex;
+        margin-bottom: 10px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 18px;
+        color: white;
+        ">
+            localStorage allows developers to store web app data in the user's browser for an infinite ammount of time.
+        </p>
+
+        <p style="
+        display: flex;
+        margin-bottom: 70px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 18px;
+        color: white;
+        ">
+            This means the browser can be closed and opened again anytime in the future and the data will remain stored.
+        </p>
+
+        <h2 style="
+        display: flex;
+        justify-content: start;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 30px;
+        color: white;
+        margin-bottom: 5px;
+        ">
+            The Pros
+        </h2>
+
+        <ul style="
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 18px;
+        color: white;
+        
+        ">
+            <li style="margin: 5px;">Data does not expire</li>
+            <li style="margin: 5px;">Can store 5-10MB of data</li>
+            <li style="margin: 5px;">Simple to use</li>
+            <li style="margin: 5px;">Eliminates need for a backend database</li>
+        </ul>
+
+        <h2 style="
+        display: flex;
+        justify-content: start;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 30px;
+        color: white;
+        margin-bottom: 5px;
+        ">
+            The Cons
+        </h2>
+
+        <ul style="
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 18px;
+        color: white;
+        margin-bottom: 50px;
+        ">
+            <li style="margin: 5px;">Stores a maxiumum of 10MB</li>
+            <li style="margin: 5px;">Data is not secure</li>
+            <li style="margin: 5px;">Limited to storing strings</li>
+        </ul>
+
+        <h2 style="
+        display: flex;
+        justify-content: start;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 30px;
+        color: white;
+        margin-bottom: 5px;
+        ">
+            How to use localStorage
+        </h2>
+
+        <p style="
+        display: flex;
+        margin-bottom: 10px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 18px;
+        color: white;
+        ">
+            
+        </p>
+
+        <div style="
+        margin-bottom: 20px;
+        ">
+
+            <h3 style="
+            display: flex;
+            justify-content: center;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            color: white;
+            margin-bottom: 10px;
+            ">
+                Insert Data
+            </h3>
+
+            <div style="
+            display: flex;
+            justify-content: center;
+            ">
+
+                <input id="keyInput" type="text" placeholder="'Key'" style="
+                padding: 7px;
+                height: 40px;
+                width: 100px;
+                text-align: center;
+                ">
+
+                <input id="valueInput" type="text" placeholder="'Value'" style="
+                padding: 7px;
+                height: 40px;
+                width: 100px;
+                text-align: center;
+                ">
+
+                <button type="button" id="buttClick" style="
+                padding: 7px;
+                height: 56px;
+                width: 100px;
+                margin-top: 1px;
+                background-color: #20639B;
+                color: white;
+                border: 2px solid white;
+                ">
+                    Enter
+                </button>
+
+            </div>
+    
+
+        </div>
+
+    </div>
+
     
 </body>
+
+    <script type="text/javascript">
+        const keyInput = document.getElementById("keyInput");
+        const valueInput = document.getElementById("valueInput");
+        const buttClick = document.getElementById("buttClick");
+       
+
+        buttClick.onclick = function () {
+            const key = keyInput.value;
+            const value = valueInput.value;
+
+            console.log(key);
+            console.log(value);
+
+            if (key && value) {
+                localStorage.setItem(key, value);
+                location.reload();
+            }
+
+           };
+
+    </script>
+
 </html>
+

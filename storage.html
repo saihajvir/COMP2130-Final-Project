@@ -147,6 +147,8 @@
                 padding: 7px;
                 height: 40px;
                 width: 100px;
+                margin:0 5px 0 5px;
+
                 text-align: center;
                 ">
 
@@ -154,6 +156,8 @@
                 padding: 7px;
                 height: 40px;
                 width: 100px;
+                margin:0 5px 0 5px;
+
                 text-align: center;
                 ">
 
@@ -165,9 +169,25 @@
                 background-color: #20639B;
                 color: white;
                 border: 2px solid white;
+                margin:0 5px 0 5px;
+
                 ">
                     Enter
                 </button>
+
+                <button type="button" id="clearStor" style="
+                padding: 7px;
+                height: 56px;
+                width: 100px;
+                margin-top: 1px;
+                background-color: #20639B;
+                color: white;
+                border: 2px solid white;
+                margin:0 5px 0 5px;
+                ">
+                    Clear
+                </button>
+
 
             </div>
 
@@ -212,6 +232,7 @@
         const keyInput = document.getElementById("keyInput");
         const valueInput = document.getElementById("valueInput");
         const buttClick = document.getElementById("buttClick");
+        const clearStor = document.getElementById("clearStor");
         const dataOut = document.getElementById("dataOut");
        
 
@@ -233,8 +254,14 @@
                const key=localStorage.key(i);
                const value=localStorage.getItem(key);
 
-               dataOut.innerHTML += `${key}: ${value}`;
+               dataOut.innerHTML += ` ${key}: ${value}`;
            }
+
+        clearStor.onclick = function ()
+        {
+            localStorage.clear();
+            location.reload();
+        }
 
     </script>
 

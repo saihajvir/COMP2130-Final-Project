@@ -102,11 +102,12 @@
         function createAlien()
         {
             if(textbox.value == 'alien')
-            {
+            { 
                 alien = document.createElement('img')
 
                 alien.style.position = 'absolute'
                 alien.style.top = '200px'
+                alien.style.left = '50px'
                 alien.src = './images/alien/alienrwalk0.gif'
                 alien.id = 'a'
 
@@ -125,7 +126,100 @@
             }
         }
 
-        
+        stepNumber = 0
+        moveTimer = null
+        alien = document.getElementById('a')
+
+        function stepRight()
+        {
+            stepNumber++
+            if(stepNumber > 30)
+            {
+                stepNumber = 0
+            }
+
+            alien.src = "./images/alien/alienrwalk" + stepNumber +".gif"
+        }
+
+        function stepLeft()
+        {
+            stepNumber++
+            if(stepNumber > 30)
+            {
+                stepNumber = 0
+            }
+
+            alien.src = "./images/alien/alienlwalk" + stepNumber +".gif"
+        }
+
+        function moveRight()
+        {
+            stepRight()
+            alien.style.left = parseInt(alien.style.left) + 1 + "px"
+
+            if(alien.getBoundingClientRect().right == window.innerWidth)
+            {
+                stopMoving()
+                moveTimer = setInterval(moveLeft, 100)
+
+                if(textbox.value == 'run')
+                {
+                    stopMoving()
+                    moveTimer = setInterval(moveLeft, 10)
+                }
+            }
+        }
+
+        function moveLeft()
+        {
+            stepLeft()
+            alien.style.left = parseInt(alien.style.left) - 1 + "px"
+
+            if(alien.getBoundingClientRect().left == 0)
+            {
+                stopMoving()
+                moveTimer = setInterval(moveRight, 100)
+                if(textbox.value == 'run')
+                {
+                    stopMoving()
+                    moveTimer = setInterval(moveRight, 10)
+                }
+            }
+        }
+
+        function moveAlien()
+        {
+            if(alien !== null)
+            {
+                if(textbox.value == 'walk')
+                {
+                    clearInterval(moveTimer)
+                        moveTimer = null
+                        moveTimer = setInterval(moveRight, 100)
+                    
+                }
+                if(textbox.value == 'run')
+                {
+                    clearInterval(moveTimer)
+                        moveTimer = null
+                        moveTimer = setInterval(moveRight, 10)
+                }
+                if(textbox.value == 'stop')
+                {
+                    clearInterval(moveTimer)
+                        moveTimer = null
+                }
+            }
+        }
+
+        function stopMoving()
+        {
+            if(moveTimer != null)
+            {
+                clearInterval(moveTimer)
+                moveTimer = null
+            }
+        }
 
         function runFunctions()
         {
@@ -140,6 +234,8 @@
             createAlien()
 
             killAlien()
+
+            moveAlien()
         }
 
     </script>

@@ -99,6 +99,32 @@
             }
         }
 
+        function createAlien()
+        {
+            if(textbox.value == 'alien')
+            {
+                alien = document.createElement('img')
+
+                alien.style.position = 'absolute'
+                alien.style.top = '200px'
+                alien.src = './images/alien/alienrwalk0.gif'
+                alien.id = 'a'
+
+                document.body.appendChild(alien)
+            }
+        }
+
+        function killAlien()
+        {
+            if(textbox.value == 'bye')
+            {
+                if(alien !== null)
+                {
+                    alien.style.display = 'none'
+                }
+            }
+        }
+
         
 
         function runFunctions()
@@ -110,6 +136,10 @@
             alphabet()
 
             ajax()
+
+            createAlien()
+
+            killAlien()
         }
 
     </script>

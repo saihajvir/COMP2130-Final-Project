@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Final Project</title>
+    <!-- Worked on by Saihajvir Gill and Jurgen Albanel -->
+    <!-- Saihaj did the Alien functions, jQuery functions, Ajax functions, and Alphabet functions -->
+    <!-- Jurgen did the localStorage page and the jQuery plugin -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script>
@@ -41,6 +44,7 @@
                 {
                     img = document.createElement('img')
                     img.src = './images/dog.jpg'
+                    img.style.margin = '10px'
 
                     document.body.appendChild(img) 
 
@@ -79,23 +83,14 @@
         {
             if(textbox.value == 'ajax')
             {
-                ajaxReq = new XMLHttpRequest()
-                ajaxReq.open("GET", "advice.txt", true)
-                ajaxReq.onreadystatechange=processData
-                ajaxReq.send(null)
-
-                function processData()
+                $.get('advice.txt', function (data)
                 {
-                    if(ajaxReq.readyState == 4)
-                    {
-                        if(ajaxReq.status == 200)
-                        {
-                            ajaxText = document.createElement("h1")
-                            ajaxText.innerHTML = ajaxReq.responseText
-                            document.body.appendChild(ajaxText)
-                        }
-                    }
-                }
+                    advText = JSON.parse(data);
+                    
+                    ajaxText = document.createElement('h1')
+                    document.body.appendChild(ajaxText)
+                    ajaxText.innerHTML = advText.join(" ").toUpperCase()
+                })
             }
         }
 
